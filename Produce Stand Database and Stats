@@ -1,0 +1,32 @@
+CREATE TABLE store (ID INTEGER PRIMARY KEY, Item TEXT, Section TEXT, Price INTEGER, Number_in_stock INTEGER, Popularity INTEGER);
+
+
+INSERT INTO store VALUES (1, "Yellow Squash", "Vegetables", 0.99, 50, 7);
+INSERT INTO store VALUES (2, "Red Watermelon", "Melons", 1.25, 33, 10);
+INSERT INTO store VALUES (3, "Yellow Watermelon", "Melons", 1.75, 16, 5);
+INSERT INTO store VALUES (4, "Purple Hull Peas", "Peas and Beans", 0.39, 100, 8);
+INSERT INTO store VALUES (5, "Black Eyed Peas", "Peas and Beans", 0.30, 87, 7);
+INSERT INTO store VALUES (6, "Cherry Tomatoes", "Vegetables", 1.05, 25, 8);
+INSERT INTO store VALUES (7, "Roma Tomatoes", "Vegetables", 0.80, 22, 8);
+INSERT INTO store VALUES (8, "Tomatoes", "Vegetables", 0.75, 67, 9);
+INSERT INTO store VALUES (9, "Honeycrisp Apples", "Fruit", 3.75, 63, 8);
+INSERT INTO store VALUES (10, "Yellow Peaches", "Fruit", 1.99, 49, 9);
+INSERT INTO store VALUES (11, "White Peaches", "Fruit", 2.25, 27, 8);
+INSERT INTO store VALUES (12, "Honeydew", "Melons", 0.75, 30, 6);
+INSERT INTO store VALUES (13, "Cantelope", "Melons", 0.65, 30, 7);
+INSERT INTO store VALUES (14, "Strawberries", "Fruit", 2.40, 40, 8);
+INSERT INTO store VALUES (15, "Green Bell Peppers", "Peppers", 0.75, 12, 4);
+INSERT INTO store VALUES (16, "Jalapeno Peppers", "Peppers", 1.00, 8, 3);
+INSERT INTO store VALUES (17, "Green Beans", "Peas and Beans", 0.42, 76, 5);
+INSERT INTO store VALUES (18, "Lima Beans", "Peas and Beans", 0.25, 48, 3);
+INSERT INTO store VALUES (19, "Yellow Onions", "Vegetables", 0.88, 22, 7);
+INSERT INTO store VALUES (20, "Purple Onions", "Vegetables", 0.98, 20, 8);
+
+--display the database ordered by price.
+SELECT * FROM store ORDERED BY price desc;
+
+--what is the avg price of items in the fruit section?
+SELECT AVG(price) "avg fruit item price" FROM store WHERE section="Fruit";
+
+--what are the 5 least popular items?
+SELECT item, price, popularity FROM store ORDER BY popularity asc LIMIT 5;
