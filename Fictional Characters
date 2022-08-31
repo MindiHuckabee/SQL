@@ -1,0 +1,110 @@
+CREATE TABLE Fictional_Characters (id INTEGER,
+    Name TEXT,
+    Gender TEXT,
+    Age INTEGER);
+    
+INSERT INTO Fictional_Characters (id, name, gender, age)
+    VALUES (1, "Fix-It-Felix", "Male", 30);
+INSERT INTO Fictional_Characters (id, name, gender, age) 
+    VALUES (2, "Vanellope von Schweetz", "Female", 9);
+INSERT INTO Fictional_Characters (id, name, gender, age) 
+    VALUES (3, "Sergent Calhoun", "Female", 34);
+INSERT INTO Fictional_Characters (id, name, gender, age) 
+    VALUES (4, "Wreck It Ralph", "Male", 65);
+INSERT INTO Fictional_Characters (id, name, gender, age) 
+    VALUES (5, "King Candy", "Male", 60);
+INSERT INTO Fictional_Characters (id, name, gender, age) 
+    VALUES (6, "Zangief", "Male", 37);
+INSERT INTO Fictional_Characters (id, name, gender, age) 
+    VALUES (7, "Sour Ball", "Male", 20);
+INSERT INTO Fictional_Characters (id, name, gender, age) 
+    VALUES (8, "Mary", "Female", 63);
+INSERT INTO Fictional_Characters (id, name, gender, age) 
+    VALUES (9, "Taffyta Muttonfudge", "Female", 10);
+INSERT INTO Fictional_Characters (id, name, gender, age) 
+    VALUES (10, "Rancis Fluggerbutter", "Male", 9);
+INSERT INTO Fictional_Characters (id, name, gender, age) 
+    VALUES (11, "Cammy", "Female", 48);
+INSERT INTO Fictional_Characters (id, name, gender, age) 
+    VALUES (12, "Vega", "Male", 53);
+INSERT INTO Fictional_Characters (id, name, gender, age) 
+    VALUES (13, "Gene", "Male", 65);
+INSERT INTO Fictional_Characters (id, name, gender, age) 
+    VALUES (14, "General Hologram", "Male", 42);
+INSERT INTO Fictional_Characters (id, name, gender, age) 
+    VALUES (15, "Dr. Brad Scott", "Male", 35);
+    
+CREATE TABLE Games (id INTEGER PRIMARY KEY,
+    Character_ID INTEGER,
+    Game_Title TEXT,
+    Year INTEGER);
+    
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (1, "Fix It Felix Jr.", 2012);
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (4, "Fix It Felix Jr.", 2012);
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (8, "Fix It Felix Jr.", 2012);
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (2, "Sugar Rush", 1997);
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (5, "Sugar Rush", 1997);
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (7, "Sugar Rush", 1997);
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (3, "Hero's Duty", 2012);
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (6, "Street Fighter", 1991);
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (9, "Sugar Rush", 1997);
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (10, "Sugar Rush", 1997);
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (13, "Fix It Felix Jr.", 2012);
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (14, "Hero's Duty", 2012);
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (15, "Hero's Duty", 2012);
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (11, "Street Fighter", 1991);
+INSERT INTO Games (character_id, game_title, year) 
+    VALUES (12, "Street Fighter", 1991);
+    
+CREATE TABLE Buddies (id INTEGER PRIMARY KEY,
+    Buddy1_id INTEGER, 
+    Buddy2_id INTEGER);
+    
+INSERT INTO buddies (buddy1_id, buddy2_id)
+    VALUES (1, 3);
+INSERT INTO buddies (buddy1_id, buddy2_id)
+    VALUES (2, 4);
+INSERT INTO buddies (buddy1_id, buddy2_id)
+    VALUES (5, 7);    
+INSERT INTO buddies (buddy1_id, buddy2_id)
+    VALUES (6, 8);
+INSERT INTO buddies (buddy1_id, buddy2_id)
+    VALUES (9, 10);
+INSERT INTO buddies (buddy1_id, buddy2_id)
+    VALUES (11, 12);
+INSERT INTO buddies (buddy1_id, buddy2_id)
+    VALUES (13, NULL);
+INSERT INTO buddies (buddy1_id, buddy2_id)
+    VALUES (14, 15);
+
+
+SELECT name, game_title FROM games
+    JOIN fictional_characters
+    ON games.character_id = fictional_characters.id;
+    
+SELECT a.name, b.name AS Best_Friend FROM buddies
+    JOIN fictional_characters a
+    ON buddies.buddy1_id = a.id
+    JOIN fictional_characters b
+    ON buddies.buddy2_id = b.id;
+    
+SELECT fictional_characters.name AS Character, games.game_title, games.year As Release_Year
+    FROM fictional_characters
+    JOIN games
+    ON fictional_characters.id = games.character_id
+    WHERE fictional_characters.age > 30
+    ORDER BY release_year desc;
