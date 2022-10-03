@@ -1,5 +1,4 @@
-
-
+--In the SQL, I am querying a database with multiple tables in it to determine various data elements.
 
 --#1 Show customers (their full names, customer ID, and country) who are not in the US
 SELECT customers.FirstName, customers.LastName, customers.Customerid, customers.Country FROM chinook.customers WHERE Country<>'USA';
